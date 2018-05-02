@@ -1,0 +1,4 @@
+com\freelancing\prj\controller\AppConfigration.class
+com\freelancing\prj\controller\HomeController.class
+com\freelancing\prj\repositories\UserRepositoryQ.class
+com\freelancing\prj\persistance\User.class
