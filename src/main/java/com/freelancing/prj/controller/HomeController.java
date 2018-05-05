@@ -1,5 +1,7 @@
 package com.freelancing.prj.controller;
 
+import com.freelancing.prj.component.SampleComponent;
+import com.freelancing.prj.component.UserImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -8,15 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.EntityManagerFactory;
-import com.freelancing.prj.repositories.UserRepositoryQ;
+import com.freelancing.prj.component.UserRepositoryQ;
 
 
 @Controller
 public class HomeController{
     
-               
-                
+        @Autowired       
+        private SampleComponent sampleComponent ;   
+        
+        @Autowired
+        private EntityManagerFactory emf;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home( Model model) {
 
@@ -36,6 +42,10 @@ public class HomeController{
 	@RequestMapping(value = "/test2", method = RequestMethod.GET)
 	public String test2( Model model) {
 
+            EntityManager em = emf.createEntityManager();
+            User u = (User)em.createNativeQuery("Select * from user", User.class).getResultList().get(0);
+            System.out.println("user"+u.toString());
+            
 		model.addAttribute("userName", "testUser2");
 		return "user2";
 	}
@@ -44,8 +54,8 @@ public class HomeController{
 	public String test3( Model model) {
             
                    
-        System.out.println("user"+user.toString());
-	model.addAttribute("userName", user.getUserName());
+        System.out.println("user"+sampleComponent.testValue());
+	//model.addAttribute("userName", user.getUserName());
            
 	return "user2";
 	}

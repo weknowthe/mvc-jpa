@@ -23,7 +23,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableJpaRepositories
 @EnableTransactionManagement
 @ComponentScan(basePackages = 
-        {"com.freelancing.prj.controller","com.freelancing.prj.persistance","com.freelancing.prj.repositories"})
+        {"com.freelancing.prj.controller","com.freelancing.prj.component",
+            "com.freelancing.prj.persistance","com.freelancing.prj.repositories"})
 public class AppConfigration {    
     @Bean
     public DataSource getDataSource() {        
@@ -67,7 +68,8 @@ public class AppConfigration {
           System.out.println("line 70");
         entityManagerFactoryBean.setJpaVendorAdapter(h);        
           System.out.println("line 72");
-        entityManagerFactoryBean.setPackagesToScan(new String []{"com.freelancing.prj.controller","com.freelancing.prj.persistance","com.freelancing.prj.repositories"});
+        entityManagerFactoryBean.setPackagesToScan(new String []{"com.freelancing.prj.controller",
+            "com.freelancing.prj.component","com.freelancing.prj.persistance","com.freelancing.prj.repositories"});
           System.out.println("line 74");
         Properties jpaProperties = new Properties();
             jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
