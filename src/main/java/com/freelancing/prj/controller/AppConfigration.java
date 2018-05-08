@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @EnableJpaRepositories
 @EnableTransactionManagement
+@Import({ SecurityConfig.class })
 @ComponentScan(basePackages = 
         {"com.freelancing.prj.controller","com.freelancing.prj.component",
             "com.freelancing.prj.persistance","com.freelancing.prj.repositories"})
